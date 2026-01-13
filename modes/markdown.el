@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/modes/markdown.el -*- lexical-binding: t; -*-
 
 (after! markdown-mode
-  (setq markdown-command "pandoc --filter=pandoc-crossref --lua-filter=diagram.lua --number-sections --embed-resources"))
+  (setq markdown-command "pandoc --filter=pandoc-crossref -L diagram.lua -L pandoc-sidenote.lua --number-sections --embed-resources"))
 
 (use-package! markdown-preview-mode
   :after markdown-mode
@@ -17,17 +17,15 @@
   ;; 设置资源存放路径
   (setq! markdown-preview-assets-dir (expand-file-name "assets" doom-user-dir))
 
-  (setq! markdown-preview-stylesheets '("tufte.css" "tufte-extra.css" "theme.css" "skylighting-solarized-theme.css"))
+  (setq! markdown-preview-stylesheets '("theme.css" "skylighting-solarized-theme.css" "tufte.css"))
 
-  (add-to-list 'markdown-preview-javascript "https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js")
   (setq! markdown-preview-script-onupdate "MathJax.typesetPromise()")
 
   (setq! markdown-preview-delay-time 300)
 
   ;; 覆盖使用的模板文件为我自己的模板
-  (defvar markdown-preview--preview-template
-    (expand-file-name "assets/preview.html" doom-user-dir)
-    "`markdown-preview-mode' html preview template.")
+  (setq! markdown-preview--preview-template
+         (expand-file-name "assets/preview.html" doom-user-dir))
 
   ;; 覆盖启动http服务器的函数，增加从指定目录读取文件的功能
   (defun markdown-preview--start-http-server (port)

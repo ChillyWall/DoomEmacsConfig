@@ -9,6 +9,26 @@
     <title>Markdown preview</title>
     ${MD_STYLE}
     <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ], // 允许使用 $...$ 编写行内公式
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+          processEscapes: true,
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
     ${MD_JS}
     <script>
       ${MD_JS_ONINIT}
@@ -39,9 +59,9 @@
     </script>
   </head>
   <body>
-    <article id="markdown-body" class="markdown-body">
+    <main id="markdown-body" class="markdown-body">
       <p>Markdown preview</p>
-    </article>
+    </main>
 
     <script>
       (function () {
