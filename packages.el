@@ -52,3 +52,19 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+;; Markdown and latex
+(package! pandoc-mode)
+(package! markdown-preview-mode)
+
+;; C/C++
+(package! cmake-integration
+  :recipe (:host github :repo "darcamo/cmake-integration"))
+
+;; Common utils
+(package! msgu :recipe
+  (:host github
+   :repo "jcs-elpa/msgu"))
+(package! ts-docstr :recipe
+  (:host github
+   :repo "emacs-vs/ts-docstr"))

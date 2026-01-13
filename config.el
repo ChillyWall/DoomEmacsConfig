@@ -1,4 +1,4 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;;; $DOOMDIR/lang/markdown/markdown.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -27,7 +27,16 @@
 (setq doom-font (font-spec :family "Fira Code Nerd Font" :size 14)
       doom-serif-font (font-spec :family "Libertinus Serif" :weight 'regular)
       doom-symbol-font (font-spec :family "Noto Serif CJK SC" :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Noto Sans CJK SC" :weight 'regular))
+      doom-variable-pitch-font (font-spec :family "Libertinus Serif" :weight 'regular))
+(after! unicode-fonts
+  (dolist (unicode-block '("Mathematical Alphanumeric Symbols"
+                           "Mathematical Operators"
+                           "Miscellaneous Mathematical Symbols-A"
+                           "Miscellaneous Mathematical Symbols-B"
+                           "Miscellaneous Symbols"
+                           "Miscellaneous Symbols and Arrows"
+                           "Miscellaneous Symbols and Pictographs"))
+    (push "Libertinus Math" (cadr (assoc unicode-block unicode-fonts-block-font-mapping)))))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -37,7 +46,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-palenight)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -80,3 +89,11 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(load! "keymaps.el")
+
+;; 加载其他插件
+(let ((mode-dir (expand-file-name "modes" doom-user-dir)))
+  (when (file-directory-p mode-dir)
+    (dolist (file (directory-files-recursively mode-dir "\\.el$"))
+      (when (file-regular-p file)
+        (load file)))))
