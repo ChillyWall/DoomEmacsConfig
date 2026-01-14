@@ -3,6 +3,9 @@
 (after! markdown-mode
   (setq markdown-command "pandoc --filter=pandoc-crossref -L diagram.lua -L pandoc-sidenote.lua --number-sections --embed-resources"))
 
+(add-hook! 'markdown-mode-hook
+           #'markdown-toggle-math)
+
 (use-package! markdown-preview-mode
   :after markdown-mode
   :init
