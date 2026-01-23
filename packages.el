@@ -57,6 +57,19 @@
 (package! pandoc-mode)
 (package! markdown-preview-mode)
 
+;; Org
+;;更强大的索引能力
+(package! org-ql)
+;; 更好的查找org-roam的节点
+(package! org-roam-ql
+  :recipe (:host github :repo "ahmed-shariff/org-roam-ql"
+           :files (:defaults (:exclude "org-roam-ql-ql.el"))))
+;; 优化org-roam在创建节点，插入节点等操作的性能
+(package! org-mem)
+(package! org-node)
+;; 增强org的交叉引用能力
+(package! org-ref)
+
 ;; C/C++
 (package! cmake-integration
   :recipe (:host github :repo "darcamo/cmake-integration"))
