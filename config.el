@@ -24,7 +24,7 @@
 ;;(setq doom-font (font-spec :family "Fira Code Nerd Font" :size 12 :weight ':regular)
 ;;     doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(setq doom-font (font-spec :family "Fira Code Nerd Font" :size 14)
+(setq doom-font (font-spec :family "Fira Code Nerd Font" :size 16)
       doom-serif-font (font-spec :family "Libertinus Serif" :weight 'regular)
       doom-symbol-font (font-spec :family "Noto Serif CJK SC" :weight 'regular)
       doom-variable-pitch-font (font-spec :family "Libertinus Serif" :weight 'regular))

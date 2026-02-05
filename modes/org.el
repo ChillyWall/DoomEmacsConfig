@@ -94,3 +94,11 @@
 (add-to-list 'org-roam-capture-templates
              '("s" "snippets" plain "%?" :target
                (file+head "snippets/%<%Y>/%<%m>/%<%d>-${slug}.org" "#+title: ${title}\n") :unnarrowed t))
+
+(add-to-list 'org-roam-capture-templates
+             '("j" "Project journal" plain "%?" :target
+               (file+head "Projects/obstacle_fusion/journal/%<%m>/%<%d>-${slug}.org" "#+title: ${title}\n#+filetags: :obstacle_fusion:journal: ") :unnarrowed t))
+
+(add-to-list 'org-roam-capture-templates
+             '("e" "Project experiment" plain "%?" :target
+               (file+head "Projects/obstacle_fusion/experiments/%<%Y%m%d>-${slug}.org" "#+title: ${title}\n#+filetags: :obstacle_fusion:experiment: ") :unnarrowed t))
