@@ -75,9 +75,10 @@
   :recipe (:host github :repo "darcamo/cmake-integration"))
 
 ;; Common utils
-(package! msgu :recipe
-  (:host github
-   :repo "jcs-elpa/msgu"))
-(package! ts-docstr :recipe
-  (:host github
-   :repo "emacs-vs/ts-docstr"))
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+(package! gptel)
+
+(package! paw
+  :recipe (:host github :repo "chenyanming/paw" :files ("*")))

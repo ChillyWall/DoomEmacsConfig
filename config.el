@@ -28,6 +28,9 @@
       doom-serif-font (font-spec :family "Libertinus Serif" :weight 'regular)
       doom-symbol-font (font-spec :family "Noto Serif CJK SC" :weight 'regular)
       doom-variable-pitch-font (font-spec :family "Libertinus Serif" :weight 'regular))
+
+(setq +zen-text-scale 1.5)
+
 (after! unicode-fonts
   (dolist (unicode-block '("Mathematical Alphanumeric Symbols"
                            "Mathematical Operators"

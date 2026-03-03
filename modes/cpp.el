@@ -65,3 +65,7 @@
                            (append level '(doxygen-core))
                          level))
                      treesit-font-lock-feature-list)))
+
+(add-hook! '(c-ts-mode-hook c++-ts-mode-hook)
+  (setq lsp-semantic-tokens-enable t)
+  (setq lsp-inlay-hint-enable t))

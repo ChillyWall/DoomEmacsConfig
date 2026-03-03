@@ -102,3 +102,8 @@
 (add-to-list 'org-roam-capture-templates
              '("e" "Project experiment" plain "%?" :target
                (file+head "Projects/obstacle_fusion/experiments/%<%Y%m%d>-${slug}.org" "#+title: ${title}\n#+filetags: :obstacle_fusion:experiment: ") :unnarrowed t))
+
+(after! org-noter
+  (map! :map org-noter-doc-mode-map
+        "C-c i" #'org-noter-insert-note
+        "C-c q" #'org-noter-kill-session))
