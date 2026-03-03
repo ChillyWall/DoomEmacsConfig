@@ -79,6 +79,3 @@
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 
 (package! gptel)
-
-(package! paw
-  :recipe (:host github :repo "chenyanming/paw" :files ("*")))
