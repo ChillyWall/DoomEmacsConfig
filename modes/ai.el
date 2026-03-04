@@ -19,10 +19,11 @@
   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
 
 ;; OPTIONAL configuration
-(setq!
- gptel-model 'TheAzazel/gemma3-12b-abliterated:latest
- gptel-backend (gptel-make-ollama "Ollama"
-                 :host "ollama.aide.npu5v5.cn"
-                 :protocol "https"
-                 :stream t
-                 :models '("TheAzazel/gemma3-12b-abliterated:latest")))
+(after! gptel
+  (setq!
+   gptel-model 'TheAzazel/gemma3-12b-abliterated:latest
+   gptel-backend (gptel-make-ollama "Ollama"
+                   :host "ollama.aide.npu5v5.cn"
+                   :protocol "https"
+                   :stream t
+                   :models '("TheAzazel/gemma3-12b-abliterated:latest"))))
