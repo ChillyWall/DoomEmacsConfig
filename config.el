@@ -25,10 +25,11 @@
 ;;     doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
 (setq doom-font (font-spec :family "Fira Code Nerd Font" :size 16)
-      doom-serif-font (font-spec :family "Libertinus Serif" :weight 'regular)
+      doom-serif-font (font-spec :family "Libertinus Mono" :weight 'regular)
       doom-symbol-font (font-spec :family "Noto Serif CJK SC" :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Libertinus Serif" :weight 'regular))
-
+      doom-variable-pitch-font (font-spec :family "Libertinus Mono" :weight 'regular))
+(setq! evil-move-beyond-eol t
+       evil-move-cursor-back nil)
 (setq +zen-text-scale 1.5)
 
 (after! unicode-fonts
