@@ -69,3 +69,33 @@
 (add-hook! '(c-ts-mode-hook c++-ts-mode-hook)
   (setq lsp-semantic-tokens-enable t)
   (setq lsp-inlay-hint-enable t))
+
+(setq! c-ts-mode-indent-offset 4)
+
+(add-to-list 'auto-mode-alist '("\\.cppm\\'" . c++-mode))
+
+;; === cmake
+;; 设置gersemi作为cmake的formatter
+(set-formatter! 'gersemi
+  '("gersemi" "--quiet" "-")
+  :modes '(cmake-mode))
+;; ====== 为cmake配置neocmakelsp作为lsp
+;; 配置安装命令
+(defun lsp-neocmakelsp--download-server (_client callback error-callback update?)
+  "Install/update NeoCMakeLsp language server using `pip
+
+Will invoke CALLBACK or ERROR-CALLBACK based on result.
+Will update if UPDATE? is t."
+  (lsp-async-start-process
+   callback
+   error-callback
+   "cargo" "install" "neocmakelsp" (when update? "--force")))
+
+;; 注册lsp
+(lsp-register-client
+ (make-lsp-client
+  :new-connection (lsp-stdio-connection '("neocmakelsp" "stdio"))
+  :major-modes '(cmake-mode)
+  :priority 1  ; 比默认服务器的默认优先级(0)更高
+  :server-id 'neocmakelsp
+  :download-server-fn #'lsp-neocmakelsp--download-server)))

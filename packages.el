@@ -69,6 +69,15 @@
 (package! org-node)
 ;; 增强org的交叉引用能力
 (package! org-ref)
+(package! org-special-block-extras
+  :recipe (:host github :repo "alhassy/org-special-block-extras"))
+(unpin! org-roam)
+(package! org-roam-ui)
+(package! ox-gfm)
+(package! org-download)
+(package! websocket)
+;; org中文字体
+(package! cnfonts)
 
 ;; C/C++
 (package! cmake-integration
@@ -77,3 +86,13 @@
 ;; Common utils
 (package! copilot
   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+(package! simple-httpd
+  :recipe (:host github
+           :repo "skeeto/emacs-web-server"
+           :local-repo "simple-httpd")) ;; 强制起个别名，避免冲突
+
+;; agent-shell, for acp
+(package! shell-maker)
+(package! acp)
+(package! agent-shell)

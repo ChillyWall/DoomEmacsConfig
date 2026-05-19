@@ -1,4 +1,4 @@
-;;; $DOOMDIR/lang/markdown/markdown.el -*- lexical-binding: t; -*-
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -25,9 +25,9 @@
 ;;     doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
 (setq doom-font (font-spec :family "Fira Code Nerd Font" :size 16)
-      doom-serif-font (font-spec :family "Libertinus Mono" :weight 'regular)
+      doom-serif-font (font-spec :family "Iosevka Slab" :weight 'regular)
       doom-symbol-font (font-spec :family "Noto Serif CJK SC" :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Libertinus Mono" :weight 'regular))
+      doom-variable-pitch-font (font-spec :family "Iosevka Slab" :weight 'regular))
 (setq! evil-move-beyond-eol t
        evil-move-cursor-back nil)
 (setq +zen-text-scale 1.5)

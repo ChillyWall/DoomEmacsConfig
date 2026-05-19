@@ -26,7 +26,7 @@
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
-       vertico           ; the search engine of the future
+       (vertico +childframe +icons)           ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
@@ -84,7 +84,7 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       (syntax +childframe +flymake +icon)              ; tasing you for every semicolon you forget
+       (syntax +childframe +icon)              ; tasing you for every semicolon you forget
        ;;(spell +flyspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
@@ -101,9 +101,9 @@
        lookup              ; navigate your code and its documentation
        llm               ; when I said you needed friends, I didn't mean...
        lsp     ; M-x vscode
-       magit             ; a git porcelain for Emacs
+       (magit +forge)             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
-       ;;pass              ; password manager for nerds
+       (pass +auth)              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;terraform         ; infrastructure as code
        tmux              ; an API for interacting with tmux
@@ -189,10 +189,10 @@
 
        :app
        ;;calendar
-       ;;emms
+       emms
        everywhere        ; *leave* Emacs!? You must be joking
-       ;;irc               ; how neckbeards socialize
-       ;;(rss +org)        ; emacs as an RSS reader
+       irc               ; how neckbeards socialize
+       (rss +org)        ; emacs as an RSS reader
 
        :config
        ;;literate
