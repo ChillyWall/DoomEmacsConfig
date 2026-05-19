@@ -12,19 +12,6 @@
           "--experimental-modules-support"))
   (set-lsp-priority! 'clangd 2))
 
-;; 配置cmake-integration，在CMakeLists.txt和C/C++文件中通过 <localleader>m 启用
-(use-package! cmake-integration
-  :defer t
-  :init
-  (map! :after cc-mode
-        :map (c++-mode-map c-mode-map c++-ts-mode-map c-ts-mode-map)
-        :localleader
-        :desc "CMake Menu" :n "m" #'cmake-integration-transient)
-  (map! :after cmake-mode
-        :map cmake-mode-map
-        :localleader
-        :desc "CMake Menu" :n "m" #'cmake-integration-transient))
-
 ;; 添加doxygen的treesitter parser
 (after! treesit
   (add-to-list 'treesit-language-source-alist '(doxygen "https://github.com/tree-sitter-grammars/tree-sitter-doxygen")))
@@ -66,15 +53,31 @@
                          level))
                      treesit-font-lock-feature-list)))
 
+;; 通过lsp启用C/C++的semantic tokens和inlay hints
 (add-hook! '(c-ts-mode-hook c++-ts-mode-hook)
   (setq lsp-semantic-tokens-enable t)
   (setq lsp-inlay-hint-enable t))
 
+;; 设置C/C++的indent为4
 (setq! c-ts-mode-indent-offset 4)
 
+;; 将.cppm文件识别为C++模式
 (add-to-list 'auto-mode-alist '("\\.cppm\\'" . c++-mode))
 
 ;; === cmake
+;; 配置cmake-integration，在CMakeLists.txt和C/C++文件中通过 <localleader>m 启用
+(use-package! cmake-integration
+  :defer t
+  :init
+  (map! :after cc-mode
+        :map (c++-mode-map c-mode-map c++-ts-mode-map c-ts-mode-map)
+        :localleader
+        :desc "CMake Menu" :n "m" #'cmake-integration-transient)
+  (map! :after cmake-mode
+        :map cmake-mode-map
+        :localleader
+        :desc "CMake Menu" :n "m" #'cmake-integration-transient))
+
 ;; 设置gersemi作为cmake的formatter
 (set-formatter! 'gersemi
   '("gersemi" "--quiet" "-")
@@ -96,6 +99,6 @@ Will update if UPDATE? is t."
  (make-lsp-client
   :new-connection (lsp-stdio-connection '("neocmakelsp" "stdio"))
   :major-modes '(cmake-mode)
-  :priority 1  ; 比默认服务器的默认优先级(0)更高
+  :priority 1
   :server-id 'neocmakelsp
-  :download-server-fn #'lsp-neocmakelsp--download-server)))
+  :download-server-fn #'lsp-neocmakelsp--download-server))
